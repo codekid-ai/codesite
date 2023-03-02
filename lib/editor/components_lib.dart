@@ -15,11 +15,11 @@ import '../providers/firestore.dart';
 import '../library/dropdown_component.dart';
 import '../library/radiobutton_component.dart';
 
-class ShortcutsWidget extends ConsumerWidget {
+class ComponentsLibWidget extends ConsumerWidget {
   final String projectId;
   final String id;
 
-  ShortcutsWidget(this.projectId, this.id);
+  ComponentsLibWidget(this.projectId, this.id);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) => Stack(children: [
@@ -32,13 +32,15 @@ class ShortcutsWidget extends ConsumerWidget {
         //         error: (e, s) => Text('error'),
         //         data: (doc) => Text('Active Element: ${doc!['id'] ?? 'N/A'}'))),
         Positioned(
-          // right: 0,
-          // top: 0,
+          right: 0,
+          top: 0,
+          bottom: 0,
+          width: 300,
           child: Container(
               //decoration: cellBorderSelected,
               color: Colors.black, // Color.fromARGB(255, 50, 50, 50),
-              width: 400,
-              height: 1000,
+              // width: 400,
+              // height: 1000,
               child: Column(
                 children: [
                   Flexible(child: Text('Components')),

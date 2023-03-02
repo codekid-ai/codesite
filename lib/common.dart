@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:jiffy/jiffy.dart';
 
@@ -84,7 +86,7 @@ final movingBorder = BoxDecoration(
           color: Colors.red,
         )));
 
-const NUM_CELLS = 100;
+const NUM_CELLS = 20;
 const CELL_SIZE = 25.0;
 
 String objectTypeByKey(String key) {
@@ -102,3 +104,10 @@ String objectTypeByKey(String key) {
   }
   return 'unknown';
 }
+
+typedef DS = DocumentSnapshot<Map<String, dynamic>>;
+typedef DR = DocumentReference<Map<String, dynamic>>;
+final kDB = FirebaseFirestore.instance;
+final kUSR = FirebaseAuth.instance;
+
+final test = 'lol';

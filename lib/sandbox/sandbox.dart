@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:codekid/editor/coding_panel.dart';
 import 'package:flutter/material.dart';
 import 'package:codekid/controls/doc_field_text_edit.dart';
 
@@ -7,25 +8,14 @@ class Sandbox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(8)),
-            border: Border.all(
-              color: Colors.grey,
-            )),
-        child: ListView(
-          padding: EdgeInsets.zero,
-          shrinkWrap: true,
-          children: [
-            ListTile(
-              title: DocFieldTextEdit2(
-                  FirebaseFirestore.instance.doc('/dev/serge/text_edit/1'),
-                  'the_field'),
-            ),
-            ListTile(
-              title: Text('Text Widget 1'),
-            )
-          ],
-        ));
+    return Scaffold(
+        body: Container(
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(8)),
+                border: Border.all(
+                  color: Colors.grey,
+                )),
+            child:
+                CodingPanel('YKOkpTjeSUzXzy7xKCKx', 'Cjt5ENP6qgHLATOig0vh')));
   }
 }

@@ -10,7 +10,7 @@ import 'package:codekid/editor/objects.dart';
 import 'package:codekid/editor/properties.dart';
 import 'package:codekid/editor/selected_object_frame.dart';
 import 'package:codekid/editor/selector.dart';
-import 'package:codekid/editor/shortcuts.dart';
+import 'package:codekid/editor/components_lib.dart';
 import 'package:codekid/editor/tree.dart';
 import 'package:codekid/library/navigation_component.dart';
 
@@ -18,6 +18,7 @@ import '../providers/firestore.dart';
 import '../state/active_object_state_notifier.dart';
 import '../state/current_selector.dart';
 import '../state/generic_state_notifier.dart';
+import 'coding_panel.dart';
 import 'keyboard_processor.dart';
 
 final selectedObjectSNP = StateNotifierProvider<
@@ -134,19 +135,29 @@ class EditorPage extends ConsumerWidget {
                                   SelectedObjectFrame(
                                       activeCellLeft, activeCellTop),
                                   // here goes navigation widget
+                                  // Positioned(
+                                  //   top: 0,
+                                  //   right: 0,
+                                  //   width: 300,
+                                  //   child: Column(
+                                  //     mainAxisSize: MainAxisSize.max,
+                                  //     children: [
+                                  //       NavigationComponent(),
+                                  //       ComponentsLibWidget(projectId!, pageId),
+                                  //       Properties(activeObject),
+                                  //     ],
+                                  //   ),
+                                  // ),
                                   Positioned(
-                                    top: 0,
+                                    // top: 0,
+                                    top: MediaQuery.of(context).size.height -
+                                        600,
+                                    left: 0,
                                     right: 0,
-                                    width: 300,
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        NavigationComponent(),
-                                        ShortcutsWidget(projectId!, pageId),
-                                        Properties(activeObject),
-                                      ],
-                                    ),
-                                  ),
+                                    bottom: 0,
+                                    child: 
+                                        CodingPanel(projectId!, pageId),
+                                  )
                                 ],
                               )),
                             ],

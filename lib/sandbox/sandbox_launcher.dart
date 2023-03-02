@@ -7,8 +7,15 @@ import 'package:flutter/services.dart';
 class SandboxLauncher extends StatefulWidget {
   final Widget app;
   final Widget sandbox;
+  final Function(bool state)? saveState;
+  final Function()? getInitialState;
 
-  const SandboxLauncher({Key? key, required this.app, required this.sandbox})
+  const SandboxLauncher(
+      {Key? key,
+      required this.app,
+      required this.sandbox,
+      this.getInitialState,
+      this.saveState})
       : super(key: key);
 
   @override
@@ -17,6 +24,20 @@ class SandboxLauncher extends StatefulWidget {
 
 class _SandboxLauncherState extends State<SandboxLauncher> {
   bool _isSandbox = false;
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.getInitialState != null) {
+      widget.getInitialState!().then((value) {
+        if (value != null && value['sandbox'] != null) {
+          setState(() {
+            _isSandbox = value['sandbox'];
+          });
+        }
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) => RawKeyboardListener(
@@ -28,8 +49,12 @@ class _SandboxLauncherState extends State<SandboxLauncher> {
                 .contains(LogicalKeyboardKey.metaRight) &&
             RawKeyboard.instance.keysPressed
                 .contains(LogicalKeyboardKey.metaLeft)) {
+          print('sandbox will be shown/hidden');
           // sandbox will be shown/hidden on Left and Right Ctrl pressed at the
           // same time
+          if (widget.saveState != null) {
+            widget.saveState!(!_isSandbox);
+          }
           setState(() {
             _isSandbox = !_isSandbox;
           });

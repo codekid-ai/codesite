@@ -11,7 +11,8 @@ import '../library/checkbox_component.dart';
 import '../library/frame_component.dart';
 import '../library/icon_component.dart';
 import '../library/text_component.dart';
-import '../providers/firestore.dart';
+import 'package:flutter_firestore_providers/providers.dart';
+
 import '../library/dropdown_component.dart';
 import '../library/radiobutton_component.dart';
 

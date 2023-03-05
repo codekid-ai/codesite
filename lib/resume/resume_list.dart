@@ -1,7 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:codekid/providers/firestore.dart';
+import 'package:flutter_firestore_providers/providers.dart';
+
 import 'package:codekid/state/generic_state_notifier.dart';
 import 'package:codekid/resume/resume_tile.dart';
 

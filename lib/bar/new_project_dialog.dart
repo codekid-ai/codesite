@@ -7,6 +7,8 @@ import '../state/generic_state_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../user_viewpage.dart';
+
 class NewProjectDialog extends ConsumerWidget {
   final myController = TextEditingController();
   final projectTypeSNP =
@@ -64,11 +66,6 @@ class NewProjectDialog extends ConsumerWidget {
                   'members': [FirebaseAuth.instance.currentUser!.uid],
                   'type': ref.read(projectTypeSNP.notifier).value
                 });
-                project.collection('page').add({
-                  'timeCreated': FieldValue.serverTimestamp(),
-                  'name': 'new page'
-                });
-
                 FirebaseFirestore.instance
                     .collection(
                         'user/${FirebaseAuth.instance.currentUser!.uid}/project')
@@ -77,6 +74,12 @@ class NewProjectDialog extends ConsumerWidget {
                   'timeJoined': FieldValue.serverTimestamp(),
                   'name': myController.text,
                 });
+                FirebaseFirestore.instance
+                    .doc('user/${FirebaseAuth.instance.currentUser!.uid}')
+                    .set({
+                  'activeProject': project.id,
+                }, SetOptions(merge: true));
+                // ref.read(firstDocumentIdProvider.notifier).updateId(project.id);
                 ref.read(activeProjectSNP.notifier).value = project.id;
                 // ignore: use_build_context_synchronously
                 Navigator.pop(context);

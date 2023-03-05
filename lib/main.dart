@@ -1,3 +1,5 @@
+import 'dart:isolate';
+
 import 'package:codekid/sandbox/sandbox.dart';
 import 'package:codekid/sandbox/sandbox_launcher.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -12,8 +14,42 @@ import 'package:codekid/state/theme_state_notifier.dart';
 import 'package:codekid/theme.dart';
 import 'common.dart';
 import 'firebase_options.dart';
+import 'dart:js';
+
+import 'interop.dart';
+
+class Avatar {
+  String a = 'lol';
+  void moveBy(x, y) {
+    print('moved by $x, $y');
+  }
+}
+
+final Avatar avatar = Avatar();
+
+// Map<String, Avatar> avatars = {
+//   'serge': Avatar(),
+// };
+
+void callJS() {
+// Call a JavaScript function from Dart
+  context.callMethod('callDartFunction', ['argument1', 'argument2']);
+}
+
+void addAvatarHandler(id, handler) {
+// Call a JavaScript function from Dart
+  context.callMethod('addAvatarHandler', [id, handler]);
+}
+
+void callAvatarHandler(id) {
+// Call a JavaScript function from Dart
+  context.callMethod('callAvatarHandler', [id]);
+}
 
 void main() async {
+  // Expose a Dart function to JavaScript
+  allowInterops(context);
+
   WidgetsFlutterBinding.ensureInitialized();
 
   await Firebase.initializeApp(
@@ -32,20 +68,22 @@ class MainApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     //bool isDarkTheme = ref.watch(themeStateNotifierProvider);
     return MaterialApp(
-        title: 'Code Kid',
-        // themeMode: isDarkTheme ? ThemeMode.dark : ThemeMode.light,
-        theme: lightTheme,
-        darkTheme: darkTheme,
-        home: SandboxLauncher(
-          app: TheApp(),
-          sandbox: Sandbox(),
-          getInitialState: () async {
-            return (await kDB.doc('sandbox/serge').get()).data();
-          },
-          saveState: (s) {
-            kDB.doc('sandbox/serge').set({'sandbox': s});
-          },
-        ));
+      title: 'Code Kid',
+      // themeMode: isDarkTheme ? ThemeMode.dark : ThemeMode.light,
+      theme: lightTheme,
+      darkTheme: darkTheme,
+      home: TheApp(),
+      // SandboxLauncher(
+      //   app: TheApp(),
+      //   sandbox: Sandbox(),
+      //   getInitialState: () async {
+      //     return (await kDB.doc('sandbox/serge').get()).data();
+      //   },
+      //   saveState: (s) {
+      //     kDB.doc('sandbox/serge').set({'sandbox': s});
+      //   },
+      // )
+    );
   }
 }
 

@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../providers/firestore.dart';
+import 'package:flutter_firestore_providers/providers.dart';
 
 class CodeViewer extends ConsumerWidget {
   final DocumentReference docRef;

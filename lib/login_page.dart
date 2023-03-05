@@ -8,13 +8,13 @@ class LoginPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-        body: LoginScreen("UIUX", "Log in", {
-      "loginGitHub": true,
+        body: LoginScreen("CodeKid", "Log in", {
+      // "loginGitHub": true,
       "loginGoogle": true,
-      "loginEmail": true,
-      "loginSSO": true,
+      // "loginEmail": true,
+      // "loginSSO": true,
       "loginAnonymous": true,
-      "signupOption": true,
+      // "signupOption": true,
     }));
   }
 }

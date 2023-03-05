@@ -3,21 +3,16 @@ import 'package:codekid/editor/code_viewer.dart';
 import 'package:codekid/editor/eval_example.dart';
 import 'package:codekid/editor/multi_line_text_field.dart';
 import 'package:codekid/editor/run_output.dart';
+import 'package:codekid/main.dart';
 import 'package:dart_eval/dart_eval.dart';
 import 'package:dart_eval/stdlib/core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_eval/flutter_eval.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'dart:js';
 
 import '../common.dart';
 import 'globals.dart';
-
-class Avatar {
-  String a = 'lol';
-  void moveLeft() {
-    //print('moved Left');
-  }
-}
 
 // f() {
 //   print('hi');
@@ -49,6 +44,23 @@ class CodeSnippetEditor extends ConsumerWidget {
             children: [
               RunOutput(docRef: docRef),
               // SizedBox(width: 300, height: 800, child: EvalExample()),
+              ElevatedButton(
+                  onPressed: () async {
+                    final doc = await docRef
+                        .get(); //.add({'code': 'print("hello world")'});
+                    addAvatarHandler('move', '()=>{' + doc['code'] + '}'
+                        //'()=> {  avatar.moveBy(1,1); }'
+                        //'()=> { console.log("lala");} '
+                        );
+                  },
+                  child: Text('Register javascript')),
+              ElevatedButton(
+                  onPressed: () {
+                    print('move');
+                    final a = Avatar();
+                    callAvatarHandler('move');
+                  },
+                  child: Text('Run javascript')),
               ElevatedButton(
                   onPressed: () async {
                     final l = test;

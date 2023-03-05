@@ -4,7 +4,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:codekid/editor/button_widget.dart';
 import 'package:codekid/editor/text_widget.dart';
 import 'package:codekid/editor/textfield_widget.dart';
-import 'package:codekid/providers/firestore.dart';
+import 'package:flutter_firestore_providers/providers.dart';
+
 import 'package:codekid/editor/object_widget.dart';
 import 'package:codekid/editor/editor_page.dart';
 import 'package:codekid/editor/dropdown_widget.dart';

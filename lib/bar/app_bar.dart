@@ -7,11 +7,14 @@ import 'package:flutter_firebase_auth/user_avatar.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:codekid/bar/new_project_dialog.dart';
 import 'package:codekid/main.dart';
-import 'package:codekid/providers/firestore.dart';
+import 'package:flutter_firestore_providers/providers.dart';
+
 import 'package:codekid/state/active_project.dart';
 import 'package:codekid/state/generic_state_notifier.dart';
 import 'package:codekid/state/theme_state_notifier.dart';
 import 'package:codekid/common.dart';
+
+import '../user_viewpage.dart';
 
 class MyAppBar {
   static PreferredSizeWidget getBar(BuildContext context, WidgetRef ref) {
@@ -22,82 +25,47 @@ class MyAppBar {
               : false,
       leadingWidth:
           (MediaQuery.of(context).size.width < WIDE_SCREEN_WIDTH) ? null : 300,
-      leading: (MediaQuery.of(context).size.width < WIDE_SCREEN_WIDTH)
-          ? null
-          : Row(children: [
-              Padding(
-                padding: EdgeInsets.all(10),
-                child: Text('UIUX!'),
-              ),
-              SizedBox(
-                  width: 250,
-                  child: DropdownButton<String>(
-                      // value: ref.watch(activeProjectSNP),
-                      value: ref.watch(activeProjectSNP),
-                      items: ref.watch(myProjectsSP).when<
-                                  List<DropdownMenuItem<String>>>(
-                              loading: () => [],
-                              error: (e, s) => [],
-                              data: (projects) => projects == null
-                                  ? []
-                                  : projects
-                                      .map((e) => DropdownMenuItem<String>(
-                                          value: e['id'],
-                                          onTap: () {
-                                            ref
-                                                .read(activeProjectSNP.notifier)
-                                                .value = e['id'];
-                                          },
-                                          child: Text(e['name'])))
-                                      .toList()) +
-                          [
-                            DropdownMenuItem<String>(
-                              value: null,
-                              onTap: () => showNewProjectDialog(context, ref),
-                              child: Text('new project...'),
-                            )
-                          ],
-                      onChanged: (index) {})) //
-            ]),
-      title: (MediaQuery.of(context).size.width < WIDE_SCREEN_WIDTH)
-          ? null
-          : Align(
-              child: SizedBox(
-                  width: 500,
-                  child: ref.watch(activeProjectSNP) == null
-                      ? Container()
-                      : ref
-                          .watch(colSP(
-                              'project/${ref.watch(activeProjectSNP)!}/page'))
-                          .when(
-                              loading: () => Container(),
-                              error: (e, s) => Container(),
-                              data: (pages) => TabBar(
-                                    tabs: pages.docs
-                                        .map((t) => Tab(
-                                            iconMargin: EdgeInsets.all(0),
-                                            child:
-                                                // GestureDetector(
-                                                //     behavior: HitTestBehavior.translucent,
-                                                //onTap: () => navigatePage(text, context),
-                                                //child:
-                                                Text(t.id.toUpperCase(),
-                                                    overflow: TextOverflow.fade,
-                                                    softWrap: false,
-                                                    style: TextStyle(
-                                                        color:
-                                                            // Theme.of(context).brightness == Brightness.light
-                                                            //     ? Color(DARK_GREY)
-                                                            //:
-                                                            Colors.white))))
-                                        .toList(),
-                                    onTap: (index) {
-                                      Navigator.of(context).pushNamed('page',
-                                          arguments: {
-                                            'id': pages.docs[index].id
-                                          });
-                                    },
-                                  )))),
+      leading: Row(children: [
+        Padding(
+          padding: EdgeInsets.all(10),
+          child: Text('CodeKid'),
+        )
+      ]),
+      title: DropdownButton<String>(
+          value: ref.watch(activeProjectSNP),
+          // value: ref
+          //     .watch(firstDocumentIdProvider.notifier)
+          //     .getFirstDocumentId(),
+          items: ref.watch(myProjectsSP).when<List<DropdownMenuItem<String>>>(
+                  loading: () => [],
+                  error: (e, s) => [],
+                  data: (projects) => projects == null
+                      ? []
+                      : projects
+                          .map((e) => DropdownMenuItem<String>(
+                              value: e['id'],
+                              onTap: () {
+                                print('switching to ${e['id']}');
+                                FirebaseFirestore.instance
+                                    .doc(
+                                        'user/${FirebaseAuth.instance.currentUser!.uid}')
+                                    .set({
+                                  'activeProject': e['id'],
+                                }, SetOptions(merge: true));
+
+                                ref.read(activeProjectSNP.notifier).value =
+                                    e['id'];
+                              },
+                              child: Text(e['name'])))
+                          .toList()) +
+              [
+                DropdownMenuItem<String>(
+                  value: null,
+                  onTap: () => showNewProjectDialog(context, ref),
+                  child: Text('new project...'),
+                )
+              ],
+          onChanged: (index) {}),
       actions: [
         IconButton(
             onPressed: () {

@@ -19,9 +19,12 @@ final lightTheme = ThemeData(
     );
 
 final darkTheme = ThemeData(
+    tabBarTheme: TabBarTheme(
+      labelColor: Colors.white,
+      unselectedLabelColor: Colors.grey,
+    ),
     scaffoldBackgroundColor: Colors.black,
     primaryColor: Colors.white,
-    backgroundColor: Color(0xff181a1b),
     colorScheme: const ColorScheme(
         primary: Color(0xffcdcbc9),
         secondary: Colors.grey,

@@ -2,7 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:codekid/state/active_user.dart';
-import '../providers/firestore.dart';
+import 'package:flutter_firestore_providers/providers.dart';
+
 import 'generic_state_notifier.dart';
 
 final myProjectsSP = StreamProvider<List<Map<String, dynamic>>?>((ref) {
@@ -43,16 +44,6 @@ final activeProjectSP = StreamProvider<String?>((ref) {
       if (projects.size > 0) {
         ref.read(activeProjectSNP.notifier).value = projects.docs.first.id;
 
-        FirebaseFirestore.instance
-            .collection('project/${projects.docs.first.id}/page')
-            .get()
-            .then((pages) {
-          print('pages are: ${pages.docs.map((e) => e.id)}');
-          if (pages.size > 0) {
-            ref.read(activeProjectPageSNP.notifier).value = pages.docs.first.id;
-          }
-        });
-
         return projects.docs.first.id;
       }
       return null;
@@ -65,9 +56,6 @@ final activeProjectSP = StreamProvider<String?>((ref) {
   });
 }, dependencies: [authStateChangesSP]);
 
-final activeProjectPageSNP =
-    StateNotifierProvider<GenericStateNotifier<String?>, String?>(
-        (ref) => GenericStateNotifier<String?>(null));
 
 /// WHY THIS DOESN'T WORK?
 // final activeProjectPageSP = StreamProvider<String?>((ref) async* {

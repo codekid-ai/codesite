@@ -15,7 +15,8 @@ class Sandbox extends StatelessWidget {
                 border: Border.all(
                   color: Colors.grey,
                 )),
-            child:
-                CodingPanel('YKOkpTjeSUzXzy7xKCKx', 'Cjt5ENP6qgHLATOig0vh')));
+            child: Text('hi')
+            //CodingPanel('YKOkpTjeSUzXzy7xKCKx')
+            ));
   }
 }

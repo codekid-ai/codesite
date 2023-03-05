@@ -1,35 +1,79 @@
 import 'package:codekid/common.dart';
+import 'package:codekid/editor/code_editor.dart';
 import 'package:codekid/editor/code_snippet_editor.dart';
+import 'package:codekid/editor/virtual_keyboard_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_firestore_providers/providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../providers/firestore.dart';
+import '../interop.dart';
 
 class CodingPanel extends ConsumerWidget {
   final String projectId;
-  final String id;
+  final DS projectDoc;
 
-  CodingPanel(this.projectId, this.id);
+  CodingPanel(this.projectId, this.projectDoc);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) => Column(
+  Widget build(BuildContext context, WidgetRef ref) => Padding(
+      padding: EdgeInsets.all(8),
+      child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         mainAxisSize: MainAxisSize.max,
         children: [
-          Flexible(child: Text('Coding')),
+          Flexible(
+              child: Row(
+            children: [
+              Text('Coding'),
+              ElevatedButton(
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (context) => VirtualKeyboardWidget(
+                          kDB.collection('project/${projectId}/code')),
+                    );
+                  },
+                  child: Text('Add Code Snippet')),
+            ],
+          )),
+          // ElevatedButton(
+          //     onPressed: () async {
+          //       print('register events');
+          //       final QS codes =
+          //           await kDB.collection('project/${projectId}/code').get();
+          //       codes.docs.forEach((e) {
+          //         print(e.data());
+          //         registerEvent(e.data()['name'], e.data()['code']);
+          //       });
+          //     },
+          //     child: Text('load')),
+
           Expanded(
               child:
                   //     TabBar(
                   //   controller: TabController(length: 2, vsync: this),
                   //   tabs: [Text('one'), Text('two')],
                   // ))
-                  buildTabsFromCollectionWatch(context, ref))
+                  buildTabsFromCollectionWatch(context, ref)),
+          // ref.watch(colSP('project/${projectId}/page/${id}/code')).when(
+          //     loading: () => Text('loading'),
+          //     error: (e, s) => Text('error'),
+          //     data: (comps) => Column(
+          //           children: comps.docs
+          //               .map(
+          //                 (e) => CodeEditor(kDB.doc(
+          //                     'project/${projectId}/page/${id}/code/${e.id}')),
+          //               )
+          //               .toList(),
+
+          // ))
         ],
-      );
+      ));
 
   Widget buildTabsFromCollectionWatch(BuildContext context, WidgetRef ref) {
     final List<DS> myTabs = ref
-        .watch(colSP('project/${projectId}/page/${id}/code'))
+        .watch(colSPfiltered('project/${projectId}/code',
+            distinct: (a, b) => a.size == b.size))
         .when(
             loading: () => [],
             error: (e, s) => [],
@@ -37,14 +81,17 @@ class CodingPanel extends ConsumerWidget {
     return DefaultTabController(
       length: myTabs.length,
       child: Column(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           TabBar(
-            tabs: myTabs.map((t) => Tab(text: t['name'])).toList(),
+            tabs: myTabs.map((t) => Tab(text: t['handler'])).toList(),
           ),
           Expanded(
             child: TabBarView(
               children: myTabs
-                  .map((t) => CodeSnippetEditor(docRef: t.reference))
+                  .map((t) => CodeEditor(
+                      kDB.doc('project/${projectId}/code/${t.id}'), projectDoc))
                   .toList(),
             ),
           ),

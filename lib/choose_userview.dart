@@ -1,7 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:codekid/providers/firestore.dart';
+import 'package:flutter_firestore_providers/providers.dart';
+
 import 'package:codekid/user_viewpage.dart';
 
 class ChooseUserViewWidget extends ConsumerWidget {

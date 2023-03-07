@@ -13,9 +13,9 @@ import 'package:codekid/state/generic_state_notifier.dart';
 import 'package:codekid/state/theme_state_notifier.dart';
 import 'package:codekid/theme.dart';
 import 'common.dart';
+import 'editor/ckgame_widget.dart';
 import 'firebase_options.dart';
 import 'dart:js';
-
 import 'interop.dart';
 
 class Avatar {
@@ -130,10 +130,7 @@ class TheAppState extends ConsumerState<TheApp> {
         ),
       );
     } else {
-      return Scaffold(
-          body: ref.watch(isLoggedIn) == false
-              ? LoginPage()
-              : ChooseUserViewWidget());
+      return Scaffold(body: CKGameWidget(projectId: 'j5tMLPba33BiRJxkMZqn'));
     }
   }
 }

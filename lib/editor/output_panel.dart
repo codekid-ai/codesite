@@ -15,47 +15,53 @@ class OutputPanel extends ConsumerWidget {
   OutputPanel(this.projectId);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) => Container(
+  Widget build(BuildContext context, WidgetRef ref) => true
+      ? Container()
+      : Container(
           // color: Colors.red,
           child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               mainAxisSize: MainAxisSize.max,
               children: [
-            Flexible(child: Text('Output')),
-            Expanded(
-                child: SingleChildScrollView(
-                    child: Column(
-                        children: ref
-                            .watch(colSPfiltered('project/${projectId}/output',
-                                orderBy: 'timestamp', isOrderDesc: true))
-                            .when(
-                              loading: () => [],
-                              error: (e, s) => [],
-                              data: (output) => output.docs
-                                  .map((output) => Row(children: [
-                                        SizedBox(
-                                            width: 40,
+              Flexible(child: Text('Output')),
+              Expanded(
+                  child: SingleChildScrollView(
+                      child: Column(
+                          children: ref
+                              .watch(colSPfiltered(
+                                  'project/${projectId}/output',
+                                  orderBy: 'timestamp',
+                                  isOrderDesc: true))
+                              .when(
+                                loading: () => [],
+                                error: (e, s) => [],
+                                data: (output) => output.docs
+                                    .map((output) => Row(children: [
+                                          SizedBox(
+                                              width: 40,
+                                              child: Text(
+                                                output.data()['count'] == null
+                                                    ? ''
+                                                    : (output.data()['count'] ==
+                                                            1
+                                                        ? ''
+                                                        : output
+                                                            .data()['count']!
+                                                            .toString()),
+                                              )),
+                                          Expanded(
                                             child: Text(
-                                              output.data()['count'] == null
-                                                  ? ''
-                                                  : (output.data()['count'] == 1
-                                                      ? ''
-                                                      : output
-                                                          .data()['count']!
-                                                          .toString()),
-                                            )),
-                                        Expanded(
-                                          child: Text(output.data()['message'],
-                                              style: TextStyle(
-                                                  color:
-                                                      output.data()['error'] ==
-                                                              null
-                                                          ? Theme.of(context)
-                                                              .primaryColor
-                                                          : Colors.red)),
-                                        )
-                                      ]))
-                                  .toList(),
-                            ))))
-          ]));
+                                                output.data()['message'],
+                                                style: TextStyle(
+                                                    color: output.data()[
+                                                                'error'] ==
+                                                            null
+                                                        ? Theme.of(context)
+                                                            .primaryColor
+                                                        : Colors.red)),
+                                          )
+                                        ]))
+                                    .toList(),
+                              ))))
+            ]));
 }

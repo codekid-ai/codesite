@@ -1,50 +1,36 @@
 import 'dart:isolate';
 
-import 'package:codekid/sandbox/sandbox.dart';
-import 'package:codekid/sandbox/sandbox_launcher.dart';
+import 'package:auth/generic_state_notifier.dart';
+import 'package:codekid/theme.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:codekid/choose_userview.dart';
-import 'package:codekid/editor/editor_page.dart';
-import 'package:codekid/login_page.dart';
-import 'package:codekid/state/generic_state_notifier.dart';
-import 'package:codekid/state/theme_state_notifier.dart';
-import 'package:codekid/theme.dart';
+import 'package:providers/generic.dart';
+import 'choose_userview.dart';
 import 'common.dart';
 import 'firebase_options.dart';
 import 'dart:js';
 
+import 'iframe.dart';
+import 'iframe_native.dart';
 import 'interop.dart';
+import 'login_page.dart';
 
-class Avatar {
-  String a = 'lol';
-  void moveBy(x, y) {
-    print('moved by $x, $y');
-  }
-}
+// void callJS() {
+// // Call a JavaScript function from Dart
+//   context.callMethod('callDartFunction', ['argument1', 'argument2']);
+// }
 
-final Avatar avatar = Avatar();
+// void addAvatarHandler(id, handler) {
+// // Call a JavaScript function from Dart
+//   context.callMethod('addAvatarHandler', [id, handler]);
+// }
 
-// Map<String, Avatar> avatars = {
-//   'serge': Avatar(),
-// };
-
-void callJS() {
-// Call a JavaScript function from Dart
-  context.callMethod('callDartFunction', ['argument1', 'argument2']);
-}
-
-void addAvatarHandler(id, handler) {
-// Call a JavaScript function from Dart
-  context.callMethod('addAvatarHandler', [id, handler]);
-}
-
-void callAvatarHandler(id) {
-// Call a JavaScript function from Dart
-  context.callMethod('callAvatarHandler', [id]);
-}
+// void callAvatarHandler(id) {
+// // Call a JavaScript function from Dart
+//   context.callMethod('callAvatarHandler', [id]);
+// }
 
 void main() async {
   // Expose a Dart function to JavaScript
@@ -131,9 +117,12 @@ class TheAppState extends ConsumerState<TheApp> {
       );
     } else {
       return Scaffold(
-          body: ref.watch(isLoggedIn) == false
-              ? LoginPage()
-              : ChooseUserViewWidget());
+          body: //buildIFrameNativeWidget()
+              // buildIFrameWidget()
+              ref.watch(isLoggedIn) == false
+                  ? LoginPage()
+                  : // buildIFrameWidget()
+                  ChooseUserViewWidget());
     }
   }
 }

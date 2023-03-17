@@ -1,14 +1,11 @@
-import 'package:codekid/common.dart';
-import 'package:codekid/editor/code_editor.dart';
-import 'package:codekid/editor/code_snippet_editor.dart';
-import 'package:codekid/editor/virtual_keyboard_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_code_editor/flutter_code_editor.dart';
-import 'package:flutter_firestore_providers/providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:highlight/languages/javascript.dart';
 import 'package:jiffy/jiffy.dart';
+import 'package:providers/firestore.dart';
 
+import '../common.dart';
 import '../interop.dart';
 
 class CodeContextPanel extends ConsumerWidget {

@@ -2,9 +2,9 @@
 // import 'package:flutter/material.dart';
 // import 'package:flutter/services.dart';
 // import 'package:flutter_riverpod/flutter_riverpod.dart';
-// import 'package:codekid/common.dart';
-// import 'package:codekid/editor/properties.dart';
-// import 'package:codekid/state/generic_state_notifier.dart';
+// import 'package:ember/common.dart';
+// import 'package:ember/editor/properties.dart';
+// import 'package:ember/state/generic_state_notifier.dart';
 // import '../state/current_selector.dart';
 // import 'editor_page.dart';
 

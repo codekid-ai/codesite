@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:codekid/editor/editor_page.dart';
 
 class TheDrawer {
   static Widget buildDrawer(BuildContext context) {

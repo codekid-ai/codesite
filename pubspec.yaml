@@ -44,14 +44,29 @@ dependencies:
   http: ^0.13.5
   dart_eval: ^0.5.6
   flutter_eval: ^0.5.4
-  flutter_firestore_providers:
-    git: https://github.com/amlcloud/flutter-firestore-providers.git
-  flutter_firebase_auth:
+  common:
     git: 
-      url: https://github.com/amlcloud/flutter-firebase-auth
+      url: https://github.com/kovarny/flutter_firebase_framework.git
+      path: common
+  sandbox:
+    git: 
+      url: https://github.com/kovarny/flutter_firebase_framework.git
+      path: sandbox
+  providers:
+    git: 
+      url: https://github.com/kovarny/flutter_firebase_framework.git
+      path: providers
+  auth:
+    git: 
+      url: https://github.com/kovarny/flutter_firebase_framework.git
+      path: auth
+  widgets:
+    git: 
+      url: https://github.com/kovarny/flutter_firebase_framework.git
+      path: widgets
   flutter_colorpicker: ^1.0.3
   # flutter_iconpicker: ^3.2.2
-  rive: ^0.9.0
+  rive: 0.10.2 #^0.9.0
   flame: ^1.6.0
   flutter_iconpicker:
       git:
@@ -62,6 +77,9 @@ dependencies:
   highlight: ^0.7.0
   code_editor: ^1.3.2
   code_text_field: ^1.0.0
+  flutter_widget_from_html: ^0.9.1
+  
+
 
 dev_dependencies:
   flame_lint: ^0.2.0

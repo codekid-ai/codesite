@@ -1,19 +1,13 @@
-import 'package:flutter_firebase_auth/current_user_avatar.dart';
-import 'package:flutter_firebase_auth/login_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:codekid/bar/new_project_dialog.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_firebase_auth/user_avatar.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:codekid/bar/new_project_dialog.dart';
-import 'package:codekid/main.dart';
-import 'package:flutter_firestore_providers/providers.dart';
 
-import 'package:codekid/state/active_project.dart';
-import 'package:codekid/state/generic_state_notifier.dart';
-import 'package:codekid/state/theme_state_notifier.dart';
-import 'package:codekid/common.dart';
-
+import '../common.dart';
+import '../main.dart';
+import '../state/active_project.dart';
+import '../state/theme_state_notifier.dart';
 import '../user_viewpage.dart';
 
 class MyAppBar {
@@ -82,7 +76,7 @@ class MyAppBar {
               // print("Signed out");
             },
             icon: Icon(Icons.exit_to_app)),
-        CurrentUserAvatar()
+        // CurrentUserAvatar()
       ],
     );
   }

@@ -3,10 +3,10 @@
 // import 'package:flutter/material.dart';
 // import 'package:flutter/services.dart';
 // import 'package:flutter_riverpod/flutter_riverpod.dart';
-// import 'package:codekid/common.dart';
+// import 'package:ember/common.dart';
 // import 'package:flutter_firestore_providers/providers.dart';
 
-// import 'package:codekid/state/generic_state_notifier.dart';
+// import 'package:ember/state/generic_state_notifier.dart';
 
 // import '../ember_quest.dart';
 // import '../overlays/game_over.dart';

@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'dart:js';
 
-import 'package:codekid/interop.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';

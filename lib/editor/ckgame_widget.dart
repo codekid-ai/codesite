@@ -1,11 +1,11 @@
 import 'dart:js' as js;
 
-import 'package:codekid/common.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../common.dart';
 import '../ember_quest.dart';
 import '../interop.dart';
 import '../overlays/game_over.dart';

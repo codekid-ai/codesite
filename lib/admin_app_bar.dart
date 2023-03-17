@@ -1,9 +1,10 @@
+import 'package:auth/main.dart';
+import 'package:codekid/state/theme_state_notifier.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:codekid/main.dart';
-import 'package:codekid/state/theme_state_notifier.dart';
-import 'package:codekid/common.dart';
+
+import 'common.dart';
 
 class AdminAppBar {
   static final List<String> _tabs = [

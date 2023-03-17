@@ -1,8 +1,7 @@
+import 'package:auth/providers.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:codekid/state/active_user.dart';
-import 'package:flutter_firestore_providers/providers.dart';
 
 import 'generic_state_notifier.dart';
 

@@ -1,10 +1,11 @@
-import 'package:codekid/bar/app_bar.dart';
-import 'package:codekid/common.dart';
-import 'package:codekid/drawer.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_firestore_providers/providers.dart';
+import 'package:providers/firestore.dart';
+import '../bar/app_bar.dart';
+import '../common.dart';
+import '../drawer.dart';
+import '../iframe.dart';
 import 'ckgame_widget.dart';
 import 'code_context_panel.dart';
 import 'coding_panel.dart';
@@ -42,7 +43,9 @@ class EditorPage extends ConsumerWidget {
                           child: Container(
                               width: MediaQuery.of(context).size.width / 2,
                               height: MediaQuery.of(context).size.height / 2,
-                              child: CKGameWidget(projectId: projectId)))),
+                              child: buildIFrameWidget()
+                              //CKGameWidget(projectId: projectId)
+                              ))),
                   Positioned(
                     top: 0,
                     left: MediaQuery.of(context).size.width / 2,

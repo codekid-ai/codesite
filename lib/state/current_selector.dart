@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:codekid/editor/editor_page.dart';
 
 import '../editor/keyboard_processor.dart';
 import 'generic_state_notifier.dart';

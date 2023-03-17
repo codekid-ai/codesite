@@ -49,6 +49,7 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.1.13"
+<<<<<<< HEAD
   auth:
     dependency: "direct main"
     description:
@@ -58,6 +59,8 @@ packages:
       url: "https://github.com/kovarny/flutter_firebase_framework.git"
     source: git
     version: "0.0.1"
+=======
+>>>>>>> 060403ee2c26e3135a5272d26a5aec93416d8da7
   autotrie:
     dependency: transitive
     description:
@@ -954,7 +957,11 @@ packages:
       sha256: f53720498d5a543f9607db4b0e997c4b5438884de25b0f73098cc2671a51b130
       url: "https://pub.dev"
     source: hosted
+<<<<<<< HEAD
     version: "2.1.5"
+=======
+    version: "2.1.4"
+>>>>>>> 060403ee2c26e3135a5272d26a5aec93416d8da7
   pedantic:
     dependency: transitive
     description:
@@ -1182,18 +1189,32 @@ packages:
     dependency: transitive
     description:
       name: sqflite
+<<<<<<< HEAD
       sha256: "500d6fec583d2c021f2d25a056d96654f910662c64f836cd2063167b8f1fa758"
       url: "https://pub.dev"
     source: hosted
     version: "2.2.6"
+=======
+      sha256: "851d5040552cf911f4cabda08d003eca76b27da3ed0002978272e27c8fbf8ecc"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.2.5"
+>>>>>>> 060403ee2c26e3135a5272d26a5aec93416d8da7
   sqflite_common:
     dependency: transitive
     description:
       name: sqflite_common
+<<<<<<< HEAD
       sha256: "963dad8c4aa2f814ce7d2d5b1da2f36f31bd1a439d8f27e3dc189bb9d26bc684"
       url: "https://pub.dev"
     source: hosted
     version: "2.4.3"
+=======
+      sha256: bfd6973aaeeb93475bc0d875ac9aefddf7965ef22ce09790eb963992ffc5183f
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.4.2+2"
+>>>>>>> 060403ee2c26e3135a5272d26a5aec93416d8da7
   stack_trace:
     dependency: transitive
     description:
@@ -1361,7 +1382,11 @@ packages:
       sha256: a83ba3607a507758669cfafb03f9de09bf6e6280c14d9b9cb18f013e406dcacd
       url: "https://pub.dev"
     source: hosted
+<<<<<<< HEAD
     version: "3.0.5"
+=======
+    version: "3.0.4"
+>>>>>>> 060403ee2c26e3135a5272d26a5aec93416d8da7
   uuid:
     dependency: transitive
     description:
@@ -1382,42 +1407,77 @@ packages:
     dependency: transitive
     description:
       name: video_player
+<<<<<<< HEAD
       sha256: "868a139229acb5018d22aded3eb9cb4767ff43a8216573c086b6c535a4957481"
       url: "https://pub.dev"
     source: hosted
     version: "2.6.0"
+=======
+      sha256: "58dc3d6ceb199b82e652ec27f16485e33167ef021fe4221a954ff1aa12b1a5c0"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.5.3"
+>>>>>>> 060403ee2c26e3135a5272d26a5aec93416d8da7
   video_player_android:
     dependency: transitive
     description:
       name: video_player_android
+<<<<<<< HEAD
       sha256: dc31c60ae591aa3ccb2d460c3690ceceb86cbb826e73428d817a37650dc4e229
       url: "https://pub.dev"
     source: hosted
     version: "2.4.2"
+=======
+      sha256: "0fc42778d794465f12456ccdade3e729e4339c8a112f9e58d170dc00f17b75f2"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.3.11"
+>>>>>>> 060403ee2c26e3135a5272d26a5aec93416d8da7
   video_player_avfoundation:
     dependency: transitive
     description:
       name: video_player_avfoundation
+<<<<<<< HEAD
       sha256: "90468226c8687adf7b567d9bb42c25588783c4d30509af1fbd663b2dd049f700"
       url: "https://pub.dev"
     source: hosted
     version: "2.4.2"
+=======
+      sha256: c29bdae387091ee988a29bbb6f94341e2134a337d0bf7f6b8a087b4ba49d4d2f
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.4.0"
+>>>>>>> 060403ee2c26e3135a5272d26a5aec93416d8da7
   video_player_platform_interface:
     dependency: transitive
     description:
       name: video_player_platform_interface
+<<<<<<< HEAD
       sha256: a8c4dcae2a7a6e7cc1d7f9808294d968eca1993af34a98e95b9bdfa959bec684
       url: "https://pub.dev"
     source: hosted
     version: "6.1.0"
+=======
+      sha256: "72ba04ad0eff76123c6d782ac46621cb8be476a89c33c89173fce982b6ec049b"
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.0.2"
+>>>>>>> 060403ee2c26e3135a5272d26a5aec93416d8da7
   video_player_web:
     dependency: transitive
     description:
       name: video_player_web
+<<<<<<< HEAD
       sha256: fb3bbeaf0302cb0c31340ebd6075487939aa1fe3b379d1a8784ef852b679940e
       url: "https://pub.dev"
     source: hosted
     version: "2.0.15"
+=======
+      sha256: d635bb2834f2b14cfd52c7fc9307a95dffbe768d116dd6047a4ecbba203289c8
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.14"
+>>>>>>> 060403ee2c26e3135a5272d26a5aec93416d8da7
   virtual_keyboard_multi_language:
     dependency: "direct main"
     description:
@@ -1510,22 +1570,37 @@ packages:
     dependency: transitive
     description:
       name: webview_flutter_android
+<<<<<<< HEAD
       sha256: c849dcb6bf7367f696869006fb9575c15bdc6a1d624ae13f12de5a147a740b12
       url: "https://pub.dev"
     source: hosted
     version: "3.4.2"
+=======
+      sha256: "5dd3f32b5c2d8f4bf9d05a349e4a65fa718eb137f396f336c3893d558a58fe84"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.3.2"
+>>>>>>> 060403ee2c26e3135a5272d26a5aec93416d8da7
   webview_flutter_platform_interface:
     dependency: transitive
     description:
       name: webview_flutter_platform_interface
+<<<<<<< HEAD
       sha256: "1939c39e2150fb4d30fd3cc59a891a49fed9935db53007df633ed83581b6117b"
       url: "https://pub.dev"
     source: hosted
     version: "2.1.0"
+=======
+      sha256: df6472164b3f4eaf3280422227f361dc8424b106726b7f21d79a8656ba53f71f
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.2"
+>>>>>>> 060403ee2c26e3135a5272d26a5aec93416d8da7
   webview_flutter_wkwebview:
     dependency: transitive
     description:
       name: webview_flutter_wkwebview
+<<<<<<< HEAD
       sha256: ab12479f7a0cf112b9420c36aaf206a1ca47cd60cd42de74a4be2e97a697587b
       url: "https://pub.dev"
     source: hosted
@@ -1539,6 +1614,12 @@ packages:
       url: "https://github.com/kovarny/flutter_firebase_framework.git"
     source: git
     version: "0.0.1"
+=======
+      sha256: "87b6353b40e04f04d5f895a484ad6d92d682d9cce4d2d5b32d2d8aca2448d46e"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.2.0"
+>>>>>>> 060403ee2c26e3135a5272d26a5aec93416d8da7
   win32:
     dependency: transitive
     description:

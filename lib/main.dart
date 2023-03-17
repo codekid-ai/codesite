@@ -9,6 +9,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:providers/generic.dart';
 import 'choose_userview.dart';
 import 'common.dart';
+import 'editor/ckgame_widget.dart';
 import 'firebase_options.dart';
 import 'dart:js';
 
